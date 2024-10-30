@@ -1,5 +1,6 @@
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float
+
 
 # Création de la base de données
 Base = declarative_base()
@@ -68,11 +69,11 @@ class jeu_video(Base):
 class Ventes(Base):
     __tablename__ = "Ventes"
     id_Ventes = Column(Integer,primary_key=True)
-    NA_Sales = Column(float)
-    EU_Sales = Column(float)
-    JP_Sales = Column(float)
-    Other_Sales = Column(float)
-    Global_Sales = Column(float)
+    NA_Sales = Column(Float)
+    EU_Sales = Column(Float)
+    JP_Sales = Column(Float)
+    Other_Sales = Column(Float)
+    Global_Sales = Column(Float)
     
     id_jeu = Column(Integer)
 
