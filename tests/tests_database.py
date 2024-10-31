@@ -39,22 +39,22 @@ def test_editeur(db_session):
 
 
 # Test de Table `Plateforme`
-def tests_plateforme(db_session):
-    new_plateforme = Plateforme(nom_plateforme = 'Wii')
+def test_plateforme(db_session):
+    new_plateforme = Plateforme(nom_plateforme='Wii')
     db_session.add(new_plateforme)
     db_session.commit()
-    assert db_session.query(Plateforme).filter_by(nom_plateforme = 'Wii').first() is not None
+    assert db_session.query(Plateforme).filter_by(nom_plateforme='Wii').first() is not None
 
 
 # Test de Table `Annee_de_sortie`
-def tests_AnneeDeSortie(db_session):
+def test_AnneeDeSortie(db_session):
     new_sortie = AnneeDeSortie(date='2020')
     db_session.add(new_sortie)
     db_session.commit()
     assert db_session.query(AnneeDeSortie).filter_by(date='2020').first() is not None
 
 
-def tests_jeu_video(db_session):
+def test_jeu_video(db_session):
     new_titre = JeuVideo(titre="Super Mario")
     db_session.add(new_titre)
     db_session.commit()
