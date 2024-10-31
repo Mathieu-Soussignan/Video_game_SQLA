@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from database.models import Base, Genre, Editeur, Plateforme, AnneeDeSortie, JeuVideo, Ventes
+from database.models import Base, Genre, Editeur, Plateforme, AnneeDeSortie, JeuVideo, Ventes, Name
 
 # Connexion à la base de données SQLite
 engine = create_engine('sqlite:///database/vgsale.db')
@@ -17,6 +17,7 @@ genres = {}
 editeurs = {}
 plateformes = {}
 annees = {}
+titles = {}
 
 # Boucle sur chaque ligne du fichier CSV
 for index, row in df.iterrows():
@@ -60,9 +61,18 @@ for index, row in df.iterrows():
         annees[annee_date] = annee.id_sortie
     id_sortie = annees[annee_date]
 
+    # Gestion de l’entité `Name`
+    name = row['Name']
+    if name not in titles:
+        title = Name(title=name)
+        session.add(title)
+        session.flush()
+        titles[name] = title.id_title
+    id_title = titles[name]
+
     # Ajouter un nouveau jeu vidéo
     jeu = JeuVideo(
-        titre=row['Name'],
+        id_title=id_title,
         id_genre=id_genre,
         id_editeur=id_editeur,
         id_plateforme=id_plateforme,
