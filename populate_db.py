@@ -21,7 +21,7 @@ annees = {}
 # Boucle sur chaque ligne du fichier CSV
 for index, row in df.iterrows():
     # Gestion de l’entité `Genre`
-    genre_name = row['Nom_Genre']
+    genre_name = row['Genre']
     if genre_name not in genres:
         genre = Genre(nom_genre=genre_name)
         session.add(genre)
@@ -30,7 +30,7 @@ for index, row in df.iterrows():
     id_genre = genres[genre_name]
 
     # Gestion de l’entité `Editeur`
-    editeur_name = row['Nom_Editeur']
+    editeur_name = row['Publisher']
     if editeur_name not in editeurs:
         editeur = Editeur(nom_editeur=editeur_name)
         session.add(editeur)
@@ -39,7 +39,7 @@ for index, row in df.iterrows():
     id_editeur = editeurs[editeur_name]
 
     # Gestion de l’entité `Plateforme`
-    plateforme_name = row['Nom_Plateforme']
+    plateforme_name = row['Platform']
     if plateforme_name not in plateformes:
         plateforme = Plateforme(nom_plateforme=plateforme_name)
         session.add(plateforme)
@@ -48,7 +48,7 @@ for index, row in df.iterrows():
     id_plateforme = plateformes[plateforme_name]
 
     # Gestion de l’entité `AnneeDeSortie`
-    annee_date = row['Date']
+    annee_date = row['Year']
     if annee_date not in annees:
         annee = AnneeDeSortie(date=annee_date)
         session.add(annee)
@@ -58,7 +58,7 @@ for index, row in df.iterrows():
 
     # Ajouter un nouveau jeu vidéo
     jeu = JeuVideo(
-        titre=row['Titre'],
+        titre=row['Name'],
         id_genre=id_genre,
         id_editeur=id_editeur,
         id_plateforme=id_plateforme,
