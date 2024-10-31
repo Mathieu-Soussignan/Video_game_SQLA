@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Year
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base
 
 Base = declarative_base()
@@ -25,7 +25,7 @@ class Plateforme(Base):
 class AnneeDeSortie(Base):
     __tablename__ = "annee_de_sortie"
     id_sortie = Column(Integer, primary_key=True)
-    date = Column(Integer)  # Utiliser Year si supporté
+    date = Column(Integer)
 
 # Table `Jeu_video`
 class JeuVideo(Base):
