@@ -178,8 +178,8 @@ Cela lancera un serveur local, et vous pourrez interagir avec l'application via 
 ## 10. Collaborateurs
 
 - [Mathieu Soussignan](https://www.mathieu-soussignan.com)
-- [Ahmed Bahri](https://www.linkedin.com/in/bahri-amine/) ![LinkedIn](https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg)
-- [José Cardona](https://www.linkedin.com/in/jose-fabian-cardona-hernandez/) ![LinkedIn](https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg)
+- [Ahmed Bahri](https://www.linkedin.com/in/bahri-amine/) <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg" alt="LinkedIn" width="20" height="20">
+- [José Cardona](https://www.linkedin.com/in/jose-fabian-cardona-hernandez/) <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg" alt="LinkedIn" width="20" height="20">
 
 ## 11. Licence
 
