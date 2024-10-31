@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from database.database import create_session
-from database.models import Ventes, Jeuvideo
+from database.models import Ventes, JeuVideo
 
 st.title("Analyse des Ventes de Jeux Vidéo")
 
