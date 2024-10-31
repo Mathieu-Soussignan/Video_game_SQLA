@@ -3,3 +3,4 @@ __pycache__/
 *.sqlite3
 *.csv
 guide_detail.md
+vgsale.db
