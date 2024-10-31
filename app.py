@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from database.database import Session
-from database.models import Ventes, JeuVideo
+from database.models import Ventes, JeuVideo, Name
 
 # Titre de l'application
 st.title("Analyse des Ventes de Jeux Vidéo")
@@ -17,12 +17,17 @@ df_ventes = pd.DataFrame([(d.id_ventes, d.id_jeu, d.na_sales, d.eu_sales, d.jp_s
                           for d in data],
                          columns=['ID_Ventes', 'ID_Jeu', 'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales'])
 
+# Charger les titres de jeux vidéo
+title_data = session.query(Name).all()
+df_title = pd.DataFrame([(t.id_title,t.title) for t in title_data],columns=['ID_titre','Titre'])
+
 # Charger les noms des jeux
 jeux_data = session.query(JeuVideo).all()
-df_jeux = pd.DataFrame([(j.id_jeu, j.titre) for j in jeux_data], columns=['ID_Jeu', 'Titre'])
+df_jeux = pd.DataFrame([(j.id_jeu, j.id_title) for j in jeux_data], columns=['ID_Jeu', 'ID_titre'])
 
+df_jeux_titre = pd.merge(df_jeux,df_title,on='ID_titre',how = 'left') 
 # Joindre les tables pour avoir les titres et les ventes dans un même DataFrame
-df = pd.merge(df_ventes, df_jeux, on='ID_Jeu', how='left')
+df = pd.merge(df_jeux_titre,df_ventes,on='ID_Jeu', how='left')
 
 # Fermeture de la session
 session.close()
