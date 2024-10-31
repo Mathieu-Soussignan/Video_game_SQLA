@@ -27,13 +27,19 @@ class AnneeDeSortie(Base):
     id_sortie = Column(Integer, primary_key=True)
     date = Column(Integer)
 
+# Table `Name`
+class Name(Base):
+    __tablename__ = "Nom"
+    id_title = Column(Integer,primary_key=True)
+    title = Column(String(255))
+
 # Table `Jeu_video`
 class JeuVideo(Base):
     __tablename__ = "jeu_video"
     id_jeu = Column(Integer, primary_key=True)
-    titre = Column(String(255))
     
     # Clés étrangères vers d'autres tables
+    id_title = Column(Integer,ForeignKey('Nom.id_title'))
     id_genre = Column(Integer, ForeignKey('genre.id_genre'))
     id_editeur = Column(Integer, ForeignKey('editeur.id_editeur'))
     id_plateforme = Column(Integer, ForeignKey('plateforme.id_plateforme'))
@@ -44,6 +50,7 @@ class JeuVideo(Base):
     editeur = relationship("Editeur", backref="jeux")
     annee_sortie = relationship("AnneeDeSortie", backref="jeux")
     plateforme = relationship("Plateforme", backref="jeux")
+    title = relationship("Name",backref="jeux")
 
 # Table `Ventes`
 class Ventes(Base):
