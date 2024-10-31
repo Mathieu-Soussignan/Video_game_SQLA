@@ -10,7 +10,7 @@ sys.path.insert(0,
                     ) ))
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship, declarative_base
-from database.models import Base, Genre, Editeur, Plateforme, AnneeDeSortie, JeuVideo
+from database.models import Base, Genre, Editeur, Plateforme, AnneeDeSortie, Name
 from database.database import  Session
 
 @pytest.fixture()
@@ -55,7 +55,7 @@ def test_AnneeDeSortie(db_session):
 
 
 def test_jeu_video(db_session):
-    new_titre = JeuVideo(titre="Super Mario")
+    new_titre = Name(title="Super Mario")
     db_session.add(new_titre)
     db_session.commit()
-    assert db_session.query(JeuVideo).filter_by(titre="Super Mario").first() is not None
+    assert db_session.query(Name).filter_by(title="Super Mario").first() is not None
