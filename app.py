@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from database.database import Session
-from database.models import Ventes, JeuVideo, Name
+from database.models import Ventes, JeuVideo, Name, Genre, Editeur, AnneeDeSortie, Plateforme
 
 # Titre de l'application
 st.title("Analyse des Ventes de Jeux Vidéo")
